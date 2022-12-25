@@ -20,6 +20,10 @@ class TextEditor(QMainWindow):
         undo_action.triggered.connect(self.editor.undo)
         tool_bar.addAction(undo_action)
 
+        redo_action = QAction(QIcon('redo.png'),'redo', self)
+        redo_action.triggered.connect(self.editor.redo)
+        tool_bar.addAction(redo_action)
+
         self.addToolBar(tool_bar)
 
 
