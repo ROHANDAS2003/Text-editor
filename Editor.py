@@ -34,6 +34,11 @@ class TextEditor(QMainWindow):
         copy_action = QAction(QIcon('copy.png'), 'copy', self)
         copy_action.triggered.connect(self.editor.copy)
         tool_bar.addAction(copy_action)
+        
+        paste_action = QAction(QIcon('paste.png'), 'paste', self)
+        paste_action.triggered.connect(self.editor.paste)
+        tool_bar.addAction(paste_action)
+
         self.addToolBar(tool_bar)
 
 
