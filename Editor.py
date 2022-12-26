@@ -24,6 +24,12 @@ class TextEditor(QMainWindow):
         redo_action.triggered.connect(self.editor.redo)
         tool_bar.addAction(redo_action)
 
+        tool_bar.addSeparator()
+        tool_bar.addSeparator()
+
+        cut_action = QAction(QIcon('cut.png'), 'cut', self)
+        cut_action.triggered.connect(self.editor.cut)
+        tool_bar.addAction(cut_action)
         self.addToolBar(tool_bar)
 
 
