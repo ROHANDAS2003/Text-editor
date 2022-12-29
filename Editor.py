@@ -25,7 +25,6 @@ class TextEditor(QMainWindow):
         tool_bar.addAction(redo_action)
 
         tool_bar.addSeparator()
-        tool_bar.addSeparator()
 
         cut_action = QAction(QIcon('cut.png'), 'cut', self)
         cut_action.triggered.connect(self.editor.cut)
@@ -39,6 +38,11 @@ class TextEditor(QMainWindow):
         paste_action.triggered.connect(self.editor.paste)
         tool_bar.addAction(paste_action)
 
+        ToolBar.addSeparator()
+
+        bold_action = QAction(QIcon("bold.png"), 'Bold', self)
+        bold_action.triggered.connect(self.bold_text)
+        ToolBar.addAction(bold_action)
         self.addToolBar(tool_bar)
 
 
