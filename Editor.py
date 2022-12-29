@@ -47,6 +47,11 @@ class TextEditor(QMainWindow):
         underline_action = QAction(QIcon("underline.png"), 'Underline', self)
         underline_action.triggered.connect(self.underline_text)
         ToolBar.addAction(underline_action)
+
+        italic_action = QAction(QIcon("italic.png"), 'Italic', self)
+        italic_action.triggered.connect(self.italic_text)
+        ToolBar.addAction(italic_action)
+
         self.addToolBar(tool_bar)
 
 
