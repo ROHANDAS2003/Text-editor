@@ -43,6 +43,10 @@ class TextEditor(QMainWindow):
         bold_action = QAction(QIcon("bold.png"), 'Bold', self)
         bold_action.triggered.connect(self.bold_text)
         ToolBar.addAction(bold_action)
+
+        underline_action = QAction(QIcon("underline.png"), 'Underline', self)
+        underline_action.triggered.connect(self.underline_text)
+        ToolBar.addAction(underline_action)
         self.addToolBar(tool_bar)
 
 
