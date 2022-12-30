@@ -1,12 +1,15 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtPrintSupport import *
+import docx2txt
 import sys
 
 
 class TextEditor(QMainWindow):
-    def __init__(self) -> None:
-        super(TextEditor, self).__init__()
-        self.editor = QTextEdit()
+    def __init__(self):
+        super().__init__()
+        self.editor = QTextEdit(self)
         self.setCentralWidget(self.editor)
         self.editor.setFontPointSize(20)
         self.showMaximized()
@@ -14,7 +17,7 @@ class TextEditor(QMainWindow):
         self.create_tool_bar()
 
     def create_tool_bar(self):
-        tool_bar = QToolBar()
+        tool_bar = QToolBar("Tools", self)
 
         undo_action = QAction(QIcon('undo.png'),'undo', self)
         undo_action.triggered.connect(self.editor.undo)
@@ -38,21 +41,31 @@ class TextEditor(QMainWindow):
         paste_action.triggered.connect(self.editor.paste)
         tool_bar.addAction(paste_action)
 
-        ToolBar.addSeparator()
+        tool_bar.addSeparator()
 
         bold_action = QAction(QIcon("bold.png"), 'Bold', self)
         bold_action.triggered.connect(self.bold_text)
-        ToolBar.addAction(bold_action)
+        tool_bar.addAction(bold_action)
 
         underline_action = QAction(QIcon("underline.png"), 'Underline', self)
         underline_action.triggered.connect(self.underline_text)
-        ToolBar.addAction(underline_action)
+        tool_bar.addAction(underline_action)
 
         italic_action = QAction(QIcon("italic.png"), 'Italic', self)
         italic_action.triggered.connect(self.italic_text)
-        ToolBar.addAction(italic_action)
+        tool_bar.addAction(italic_action)
+
 
         self.addToolBar(tool_bar)
+
+
+
+    def bold_text(self):
+        # if already bold, make normal, else make bold
+        if self.editor.fontWeight() != QFont.Bold:
+            self.editor.setFontWeight(QFont.Bold)
+            return
+        self.editor.setFontWeight(QFont.Normal)
 
 
 app = QApplication(sys.argv)
