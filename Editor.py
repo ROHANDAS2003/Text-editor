@@ -59,6 +59,10 @@ class TextEditor(QMainWindow):
         self.addToolBar(tool_bar)
 
 
+    def italic_text(self):
+        # if already italic, change into normal, else italic
+        state = self.editor.fontItalic()
+        self.editor.setFontItalic(not(state))
 
     def underline_text(self):
         # if already underlined, change into normal, else underlined
