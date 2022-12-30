@@ -61,6 +61,10 @@ class TextEditor(QMainWindow):
         right_alignment_action.triggered.connect(lambda : self.editor.setAlignment(Qt.AlignRight))
         tool_bar.addAction(right_alignment_action)
 
+        left_alignment_action = QAction(QIcon("left-align.png"), 'Align Left', self)
+        left_alignment_action.triggered.connect(lambda : self.editor.setAlignment(Qt.AlignLeft))
+        tool_bar.addAction(left_alignment_action)
+
         self.addToolBar(tool_bar)
 
 
