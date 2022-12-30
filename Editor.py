@@ -60,6 +60,11 @@ class TextEditor(QMainWindow):
 
 
 
+    def underline_text(self):
+        # if already underlined, change into normal, else underlined
+        state = self.editor.fontUnderline()
+        self.editor.setFontUnderline(not(state))
+
     def bold_text(self):
         # if already bold, make normal, else make bold
         if self.editor.fontWeight() != QFont.Bold:
