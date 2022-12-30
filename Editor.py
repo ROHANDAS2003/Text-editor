@@ -55,6 +55,11 @@ class TextEditor(QMainWindow):
         italic_action.triggered.connect(self.italic_text)
         tool_bar.addAction(italic_action)
 
+        tool_bar.addSeparator()
+
+        right_alignment_action = QAction(QIcon("right-align.png"), 'Align Right', self)
+        right_alignment_action.triggered.connect(lambda : self.editor.setAlignment(Qt.AlignRight))
+        tool_bar.addAction(right_alignment_action)
 
         self.addToolBar(tool_bar)
 
