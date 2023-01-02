@@ -11,10 +11,10 @@ class TextEditor(QMainWindow):
         super().__init__()
         self.editor = QTextEdit(self)
         self.setCentralWidget(self.editor)
-        self.editor.setFontPointSize(20)
         self.showMaximized()
         self.setWindowTitle('Text Editor')
         self.create_tool_bar()
+        self.editor.setFontPointSize(20)
 
     def create_tool_bar(self):
         tool_bar = QToolBar("Tools", self)
@@ -57,6 +57,13 @@ class TextEditor(QMainWindow):
 
         tool_bar.addSeparator()
 
+        self.font_size = QSpinBox(self)   
+        self.font_size.setValue(20)
+        self.font_size.valueChanged.connect(self.set_font_size)
+        tool_bar.addWidget(self.font_size)
+
+        tool_bar.addSeparator()
+
         right_alignment_action = QAction(QIcon("right-align.png"), 'Align Right', self)
         right_alignment_action.triggered.connect(lambda : self.editor.setAlignment(Qt.AlignRight))
         tool_bar.addAction(right_alignment_action)
@@ -89,6 +96,9 @@ class TextEditor(QMainWindow):
             return
         self.editor.setFontWeight(QFont.Normal)
 
+    def set_font_size(self):
+        value = self.font_size.value()
+        self.editor.setFontPointSize(value)
 
 app = QApplication(sys.argv)
 window = TextEditor()
